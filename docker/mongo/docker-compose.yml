@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+        - 27017:27017
+    volumes:
+        - ./data:/data/db 
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    ports:
+      - 7071:8081

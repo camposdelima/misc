@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  server:
+    image: consul:latest
+    container_name: consul
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "53:8600"
+      - "53:8600/udp"
+    command: "agent -server -bootstrap -ui -domain docker -client 0.0.0.0"
+    volumes:
+      - data:/consul/data
+  # registrator:
+    # image: gliderlabs/registrator:latest
+    # command: "-ip 10.0.0.95 consul://server:8500"
+    # container_name: registrator
+    # depends_on:
+    # - server
+    # volumes:
+        # - /var/run/docker.sock:/tmp/docker.sock
+    
+volumes:
+  data:

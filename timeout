@@ -1,0 +1,3 @@
+
+C:\workspace\misc>for /L %g in ((null)) do @('hostname  02' ) 
+Deseja finalizar o arquivo em lotes (S/N)? 

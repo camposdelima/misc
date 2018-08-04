@@ -1,0 +1,2 @@
+ssh %2@%3 'mkdir -m 700 ~/.ssh; echo ' $(< ~/.ssh/id_rsa.pub) ' >> ~/.ssh/authorized_keys ; chmod 600 ~/.ssh/authorized_keys'
+docker-machine create --driver generic --generic-ip-address=%3 --generic-ssh-key "%userprofile%/.ssh/id_rsa" --generic-ssh-user=%2 %1 

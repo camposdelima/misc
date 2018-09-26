@@ -1,1 +1,1 @@
-mklink C:\Windows\system32\%1 %cd%\%1
+mklink "C:\Windows\system32\%1" "%cd%\%1"

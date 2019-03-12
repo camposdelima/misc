@@ -9,8 +9,5 @@ services:
             - "4506:4506"
             - "443:443"
         volumes:
-            - config:/config
-            - data:/data
-volumes:
-    config:
-    data:
+            - config:/etc/salt
+            - states:/srv/salt

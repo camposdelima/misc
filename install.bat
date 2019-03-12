@@ -7,5 +7,5 @@
 ))
 (	
 	choco install openssh -y -params "/SSHServerFeature /SSHServerPort:51222"
-	choco install saltminion -y --params "/master={SERVER}"
+	choco install saltminion -y --params "/master=10.0.0.95"
 ))

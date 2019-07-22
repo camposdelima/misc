@@ -1,0 +1,1 @@
+az network public-ip list | jq " .[] | \"plink \(.name)@\(.ipAddress) -P 51222 -pw Serena!@#2019 -batch hostname \"" | findstr -v @null | findstr \-ie\- | for /f "tokens=*" %f in ('sed -r -e "s/-ie-([0-9]+)-ip/.IE.\1/g" -e "s/""//g"') do @%f"

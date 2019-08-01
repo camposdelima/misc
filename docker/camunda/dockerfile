@@ -1,0 +1,2 @@
+FROM camunda/camunda-bpm-platform
+RUN wget -P /camunda/lib http://nexus.onebusaway.org/nexus/content/repositories/public/com/microsoft/sqlserver/sqljdbc6/4.2/sqljdbc6-4.2.jar

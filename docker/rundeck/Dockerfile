@@ -1,7 +1,7 @@
 # Dockerfile for rundeck
 # https://github.com/jjethwa/rundeck
 
-FROM rundeck/rundeck
+FROM jordan/rundeck
 MAINTAINER Cristiano Campos
 
 RUN cd /opt/rundeck-plugins/ && \

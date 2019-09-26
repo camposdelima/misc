@@ -3,6 +3,3 @@ RUN wget -P /camunda/lib http://nexus.onebusaway.org/nexus/content/repositories/
 RUN cd /camunda/webapps && rm -rf ROOT camunda-invoice camunda-welcome host-manager manager examples docs
 RUN mv /camunda/webapps/camunda /camunda/webapps/ROOT
 RUN sed -i 's/name="jobExecutorDeploymentAware">true</name="jobExecutorDeploymentAware">false</g' /camunda/conf/bpm-platform.xml
-RUN sed -i 's/<job-acquisition name="default" \/>/<job-acquisition name="default" \/><properties><property name="corePoolSize">20<\/property><\/properties>/g' /camunda/conf/bpm-platform.xml
-
-

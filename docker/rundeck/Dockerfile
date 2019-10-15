@@ -4,7 +4,7 @@
 FROM rundeck/rundeck:SNAPSHOT
 MAINTAINER Cristiano Campos
 
-# RUN echo "rundeck ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && cat /etc/sudoers 
+RUN echo "rundeck ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers && cat /etc/sudoers 
 
 RUN curl -L https://github.com/rundeck-plugins/http-step/releases/download/1.0.11/http-step-1.0.11.jar -o ~/libext/Rundeck-Http-Step-1.0.11.jar && \
 	curl -L https://github.com/rundeck-plugins/git-resource-model/releases/download/1.0.0/git-resource-model-1.0.0.jar -o ~/libext/git-resource-model-1.0.0.jar && \

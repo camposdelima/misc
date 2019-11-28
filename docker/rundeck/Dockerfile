@@ -1,7 +1,7 @@
 # Dockerfile for rundeck
 # https://github.com/jjethwa/rundeck
 
-FROM rundeck/rundeck:SNAPSHOT
+FROM rundeck/rundeck:3.2.0
 MAINTAINER Cristiano Campos
 
 RUN echo "rundeck ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers && cat /etc/sudoers 

@@ -1,4 +1,4 @@
-FROM camunda/camunda-bpm-platform
+FROM camunda/camunda-bpm-platform:7.12.0
 RUN wget -P /camunda/lib http://nexus.onebusaway.org/nexus/content/repositories/public/com/microsoft/sqlserver/sqljdbc6/4.2/sqljdbc6-4.2.jar
 RUN cd /camunda/webapps && rm -rf ROOT camunda-invoice camunda-welcome host-manager manager examples docs
 RUN mv /camunda/webapps/camunda /camunda/webapps/ROOT

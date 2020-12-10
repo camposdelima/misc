@@ -1,5 +1,14 @@
 FROM camunda/camunda-bpm-platform
-RUN wget -P /camunda/lib http://nexus.onebusaway.org/nexus/content/repositories/public/com/microsoft/sqlserver/sqljdbc6/4.2/sqljdbc6-4.2.jar
+#RUN wget -P /camunda/lib http://nexus.onebusaway.org/nexus/content/repositories/public/com/microsoft/sqlserver/sqljdbc6/4.2/sqljdbc6-4.2.jar
 RUN cd /camunda/webapps && rm -rf ROOT camunda-invoice camunda-welcome host-manager manager examples docs
 RUN mv /camunda/webapps/camunda /camunda/webapps/ROOT
 RUN sed -i 's/name="jobExecutorDeploymentAware">true</name="jobExecutorDeploymentAware">false</g' /camunda/conf/bpm-platform.xml
+#RUN sed -i 's/<job-acquisition name="default" \/>/<job-acquisition name="default"><properties><property name="maxJobsPerAcquisition">5<\/property><property name="waitTimeInMillis">8000<\/property><property name="lockTimeInMillis">400000<\/property><\/properties><\/job-acquisition><properties><!-- Note: the following properties only take effect in a Tomcat environment --><property name="queueSize">3<\/property><property name="corePoolSize">5<\/property><property name="maxPoolSize">60<\/property><property name="keepAliveTime">0<\/property><property name="jobExecutorPreferTimerJobs">true<\/property><property name="jobExecutorAcquireByDueDate">true<\/property><\/properties>/g' /camunda/conf/bpm-platform.xml
+
+
+
+RUN ls /camunda/lib/
+RUN rm /camunda/lib/postgresql-9.4.1212.jar
+
+
+RUN wget --directory-prefix=/camunda/lib https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory/releases/download/v1.0.15/postgres-socket-factory-1.0.15-jar-with-driver-and-dependencies.jar

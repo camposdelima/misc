@@ -1,3 +1,58 @@
-FROM fjcj/glpi
-RUN wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.5.0%2B1.0/fusioninventory-9.5.0+1.0.tar.bz2 -O /var/www/html/plugins/fi.tar.bz2 && \
-	cd /var/www/html/plugins/ && tar -xf fi.tar.bz2 && ls -lah
+FROM ubuntu:21.04
+LABEL maintainer="Cristiano Campos - cristiano.campos@outlook.com"
+
+# environment settings
+ARG DEBIAN_FRONTEND="noninteractive"
+
+#Is required? Need pass variables?
+ENV TZ=Europe/Madrid
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime
+
+RUN apt update && apt upgrade -y --no-install-recommends
+RUN apt install -y apache2 \
+    wget \
+    php7.4 \
+    php7.4-json \
+    php7.4-mbstring \
+    php7.4-mysql \
+    php7.4-cli \
+    php7.4-curl \
+    php7.4-xml \
+    php7.4-gd \
+    PHP7.4-imap \
+    PHP7.4-ldap \
+    php7.4-intl \
+    php-apcu \
+    php7.4-xmlrpc \
+    php-cas \
+    php7.4-zip \
+    php7.4-bz2
+
+
+# clean
+RUN apt clean
+RUN rm -f /var/www/html/index.html
+
+# download, uncompress and copy
+RUN wget https://github.com/glpi-project/glpi/releases/download/9.5.3/glpi-9.5.3.tgz \
+    && tar zxvf glpi-9.5.3.tgz -C /var/www/html/ --strip 1 \
+    && rm glpi-9.5.3.tgz
+
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+RUN chown -R www-data:www-data /var/www/html/
+RUN ln -sf /dev/stdout /var/log/apache2/access.log
+RUN ln -sf /dev/stderr /var/log/apache2/error.log
+
+# volume
+#VOLUME ["/var/www/html"]
+
+RUN wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi9.5.0%2B1.0/fusioninventory-9.5.0+1.0.tar.bz2 -O fi.tar.bz2 \
+	&& tar -xf fi.tar.bz2 -C /var/www/html/plugins/ \
+	&& rm fi.tar.bz2
+
+RUN cd /var/www/html/plugins/ && ls -lah
+
+# port
+EXPOSE 80
+ENTRYPOINT ["/usr/sbin/apachectl"]
+CMD ["-D", "FOREGROUND"]

@@ -1,0 +1,1 @@
+type %userprofile%\.ssh\id_rsa.pub | ssh %1 "more > %%userprofile%%\.ssh\tmp && cd %%userprofile%%\.ssh && echo. >> authorized_keys && type tmp >> authorized_keys"

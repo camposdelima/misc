@@ -1,0 +1,1 @@
+type %userprofile%\.ssh\id_rsa.pub | ssh %1 -i %2 "cat >> ~/.ssh/authorized_keys && echo 'Key copied'"

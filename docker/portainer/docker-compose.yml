@@ -2,19 +2,20 @@ version: '3'
 
 services:
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer-ce
     container_name: portainer
     ports:
       - "9000:9000"
+      - "9443:9443"
     command: -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/data
 volumes:
   data:
-networks:
-    default:
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.93.0.0/24
+# networks:
+    # default:
+        # ipam:
+            # driver: default
+            # config:
+                # - subnet: 172.93.0.0/24

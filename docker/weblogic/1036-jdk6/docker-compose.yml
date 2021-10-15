@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  weblogic:
+    image: camposdelima/weblogic:1036-jdk6
+    # build: .
+    container_name: wls1036
+    ports:
+        - "7001:7001"
+    volumes:
+        - data:/u01/oracle/weblogic/user_projects/domains/base_domain
+volumes:
+        data:

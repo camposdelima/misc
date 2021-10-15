@@ -12,10 +12,13 @@ ENV MW_HOME $ORACLE_HOME/weblogic
 ENV WL_HOME $MW_HOME/wlserver
 ENV JAVA_HOME /usr/lib/jvm/java-6-oracle
 
-ENV ADMIN_PASSWORD welcome01
+ENV ADMIN_PASSWORD welcome1
 ENV ADMIN_PORT 7001
 ENV USER_MEM_ARGS -Xms256m -Xmx512m -XX:MaxPermSize=1024m
 ENV EXTRA_JAVA_PROPERTIES $EXTRA_JAVA_PROPERTIES -Djava.security.egd=file:///dev/urandom
+ENV SERVER_MODE dev
+ENV debugFlag true
+ENV DEBUG_PORT 8453
 
 # Setup required packages (unzip), filesystem, and oracle user
 # ------------------------------------------------------------
@@ -25,8 +28,9 @@ RUN mkdir /u01 && \
 
 WORKDIR $MW_HOME
 # Copy packages
-COPY --from=builder /wls .
-COPY prepare.py .
+COPY --chown=oracle:oracle prepare.py .
+COPY --chown=oracle:oracle --from=builder /wls .
+# RUN --chown=oracle:oracle -R /u01
 
 # Change the open file limits in /etc/security/limits.conf
 RUN sed -i '/.*EOF/d' /etc/security/limits.conf && \
@@ -38,7 +42,6 @@ RUN echo "net.core.rmem_max=4192608" > $ORACLE_HOME/.sysctl.conf && \
     echo "net.core.wmem_max=4192608" >> $ORACLE_HOME/.sysctl.conf && \ 
     sysctl -e -p $ORACLE_HOME/.sysctl.conf
 # Adjust file permissions, go to /u01 as user 'oracle' to proceed with WLS installation
-RUN chown oracle:oracle -R /u01
 RUN bash ./configure.sh
 
 ENV PATH $PATH:$MW_HOME/oracle_common/common/bin
@@ -60,7 +63,7 @@ RUN mkdir -p $MW_HOME/user_projects/domains/base_domain/servers/AdminServer/secu
 ENV PATH $PATH:$WL_HOME/common/bin:$MW_HOME/user_projects/domains/base_domain/bin:$ORACLE_HOME
 
 # Expose default http/https ports for admin console
-EXPOSE $ADMIN_PORT
+EXPOSE $ADMIN_PORT $DEBUG_PORT
 VOLUME $MW_HOME/user_projects/domains/base_domain
 # Define default command to start bash. 
 CMD ["startWebLogic.sh"]

@@ -1,0 +1,29 @@
+2022-02-16T13:03:31,261-0300 [20504 1] com.newrelic INFO: Writing to New Relic log file: D:\OneDrive\Workspace\misc\docker\new-relic-java-example\newrelic\logs\newrelic_agent.log
+2022-02-16T13:03:31,261-0300 [20504 1] com.newrelic INFO: JRE vendor Oracle Corporation version 17.0.1
+2022-02-16T13:03:31,262-0300 [20504 1] com.newrelic INFO: JVM vendor Oracle Corporation OpenJDK 64-Bit Server VM version 17.0.1+12-39
+2022-02-16T13:03:31,262-0300 [20504 1] com.newrelic INFO: OS Windows 10 version 10.0 arch amd64
+2022-02-16T13:03:31,262-0300 [20504 1] com.newrelic INFO: Agent Host: CENTAURO IP: 192.168.15.4
+2022-02-16T13:03:31,262-0300 [20504 1] com.newrelic INFO: New Relic Agent v7.5.0 is initializing...
+2022-02-16T13:03:32,535-0300 [20504 22] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2022-02-16T13:03:34,943-0300 [20504 1] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2022-02-16T13:03:35,743-0300 [20504 1] com.newrelic INFO: Setting audit_mode to false
+2022-02-16T13:03:36,096-0300 [20504 1] com.newrelic INFO: New Relic Agent v7.5.0 has started
+2022-02-16T13:03:36,096-0300 [20504 1] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@4926097b
+2022-02-16T13:03:36,097-0300 [20504 1] com.newrelic INFO: Premain startup complete in 6,099ms
+2022-02-16T13:05:36,112-0300 [20504 40] com.newrelic INFO: Host name is CENTAURO, display host CENTAURO for application TESTE
+2022-02-16T13:05:36,115-0300 [20504 40] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2022-02-16T13:05:37,465-0300 [20504 40] com.newrelic INFO: Collector redirection to collector-010.newrelic.com:443
+2022-02-16T13:05:38,335-0300 [20504 40] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2022-02-16T13:05:38,335-0300 [20504 40] com.newrelic INFO: Agent run id: BaN3r3W5lsWuADQ5ak3iA0NiDSEkAAIBAAAnIQEAAFAYAgRN4gZ9AwAFNy41LjAACENFTlRBVVJPAAVUZXN0ZQ
+2022-02-16T13:05:38,335-0300 [20504 40] com.newrelic INFO: Agent 20504@CENTAURO/TESTE connected to collector.newrelic.com:443
+2022-02-16T13:05:38,338-0300 [20504 40] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/3422570/applications/1306658429
+2022-02-16T13:05:38,340-0300 [20504 40] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2022-02-16T13:05:38,340-0300 [20504 40] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2022-02-16T13:05:38,340-0300 [20504 40] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2022-02-16T13:05:38,344-0300 [20504 40] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2022-02-16T13:05:38,345-0300 [20504 40] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2022-02-16T13:05:38,345-0300 [20504 40] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2022-02-16T13:05:38,409-0300 [20504 40] com.newrelic INFO: Real user monitoring is enabled for application TESTE. Auto instrumentation is enabled.
+2022-02-16T13:05:38,416-0300 [20504 40] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2022-02-16T13:20:55,598-0300 [20504 16] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2022-02-16T13:20:56,363-0300 [20504 16] com.newrelic.agent.core.CoreServiceImpl INFO: New Relic Agent has shutdown

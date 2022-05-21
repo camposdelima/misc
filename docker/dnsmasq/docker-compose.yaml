@@ -1,0 +1,11 @@
+version: '2'
+services:
+  dns:
+    restart: always
+    image: camposdelima/dnsmasq
+    ports:
+      - "53:53/udp"
+      - "5380:8080"
+    # environment:
+      # HTTP_USER: foo
+      # HTTP_PASS: bar

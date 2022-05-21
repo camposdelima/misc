@@ -4,6 +4,7 @@ services:
   portainer:
     image: portainer/portainer-ce
     container_name: portainer
+    network_mode: bridge
     ports:
       - "9000:9000"
       - "9443:9443"
@@ -13,9 +14,3 @@ services:
       - data:/data
 volumes:
   data:
-# networks:
-    # default:
-        # ipam:
-            # driver: default
-            # config:
-                # - subnet: 172.93.0.0/24

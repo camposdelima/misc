@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  weblogic:
+    image: camposdelima/weblogic:1411-jdk8
+    # image: nttdata819/weblogic14c
+    # build: .
+    container_name: wls1411-jdk8
+    ports:
+        - "7001:7001"
+        - "8453:8453"
+    volumes:
+        - data:/u01/oracle/weblogic/user_projects/domains/base_domain
+    # environment:
+    #   debugFlag: true
+volumes:
+        data:

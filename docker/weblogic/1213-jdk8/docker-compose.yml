@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  weblogic:
+    image: camposdelima/weblogic:1213-jdk8
+    # build: .
+    container_name: wls1213
+    ports:
+        - "7001:7001"
+        - "8453:8453"
+    volumes:
+        - data:/u01/oracle/weblogic/user_projects/domains/base_domain
+    # environment:
+    #   debugFlag: true
+volumes:
+        data:

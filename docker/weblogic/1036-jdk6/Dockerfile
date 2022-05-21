@@ -25,6 +25,7 @@ ENV DEBUG_PORT 8453
 RUN mkdir /u01 && \
     chmod a+xr /u01 && \
     useradd -b /u01 -m -s /bin/bash oracle 
+RUN apt update && apt install curl -y
 
 WORKDIR $MW_HOME
 # Copy packages

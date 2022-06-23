@@ -3,6 +3,9 @@
 
 # WLS Configuration (will get preferably from env)
 # -------------------------------
+import sys
+
+
 admin_port = int(os.environ.get("ADMIN_PORT", "7001"))
 admin_pass = os.environ.get("ADMIN_PASSWORD", "welcome01")
 server_mode = os.environ.get("SERVER_MODE", "dev")
@@ -38,4 +41,4 @@ closeTemplate()
 
 # Exit WLST
 # =========
-exit()
+sys.exit()
